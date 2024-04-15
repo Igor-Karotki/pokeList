@@ -1,8 +1,9 @@
 import { Image, StyleSheet, Text, View } from 'react-native'
 import React, { Key } from 'react'
 import { useQuery } from '@tanstack/react-query'
+import { Pokemon, PokemonAbility } from './types'
 
-const PokeCard = ({ item }: any) => {
+const PokeCard = ({ item }: Pokemon) => {
     const { data } = useQuery({
         queryKey: ['abilities', item.name],
         queryFn: () =>
@@ -21,7 +22,7 @@ const PokeCard = ({ item }: any) => {
                 />
                 <View style={styles.cardBody}>
                     <Text style={styles.cardLabel}>Abilities:</Text>
-                    <View>{data?.abilities?.map((ability: { ability: { name: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | null | undefined } }, i: Key) => {
+                    <View>{data?.abilities?.map((ability:PokemonAbility, i: Key) => {
                         return <Text style={styles.ability} key={i}>{ability?.ability?.name}</Text>
                     })}</View>
                 </View>

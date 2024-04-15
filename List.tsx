@@ -15,7 +15,7 @@ import {
 
 const List = () => {
   const [page, setPage] = useState(0)
-  const listViewRef = useRef<FlashList<ReactNode>>(null);
+  const listViewRef = useRef<FlashList<any>>(null);
 
   const fetchPokemons = (page = 0) =>
     fetch(`${process.env.EXPO_PUBLIC_API}pokemon/?limit=${PAGE_LIMIT}&offset=${PAGE_LIMIT * page}`).then((res) => res.json())
